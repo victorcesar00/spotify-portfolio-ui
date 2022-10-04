@@ -1,0 +1,4 @@
+@font-face {
+    font-family: 'CircularBlack';
+    src: local('CircularSpotifyText-Black'), url(./fonts/circular/CircularSpotifyText-Black.otf) format("opentype");
+}
