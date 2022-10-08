@@ -1,4 +1,11 @@
 @font-face {
     font-family: 'CircularBlack';
     src: local('CircularSpotifyText-Black'), url(./fonts/circular/CircularSpotifyText-Black.otf) format("opentype");
+    unicode-range: U+0000-001F, U+0021-007F;
+}
+
+@font-face {
+    font-family: 'CircularBook';
+    src: local('CircularSpotifyText-Book'), url(./fonts/circular/CircularSpotifyText-Book.otf) format("opentype");
+    unicode-range: U+0000-001F, U+0021-007F;
 }

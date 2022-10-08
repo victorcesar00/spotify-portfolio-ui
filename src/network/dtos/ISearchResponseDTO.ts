@@ -100,7 +100,7 @@ interface IPlaylistsReturnObject extends IDefaultReturnObject {
     items: IPlaylistReturnObject[]
 }
 
-export interface ITracksReturnObject extends IDefaultReturnObject {
+export interface ITrackReturnObject extends IDefaultReturnObject {
     album: IAlbumReturnObject
     artists: IArtistReturnObject[]
     available_markets: string[]
@@ -124,9 +124,13 @@ export interface ITracksReturnObject extends IDefaultReturnObject {
     uri: string
 }
 
+export interface ITracksReturnObject {
+    items: ITrackReturnObject[]
+}
+
 export default interface ISearchResponseDTO {
-    albums: IAlbumsReturnObject[]
-    artists: IArtistsReturnObject[]
-    playlists: IPlaylistsReturnObject[]
-    tracks: ITracksReturnObject[]
+    albums: IAlbumsReturnObject
+    artists: IArtistsReturnObject
+    playlists: IPlaylistsReturnObject
+    tracks: ITracksReturnObject
 }

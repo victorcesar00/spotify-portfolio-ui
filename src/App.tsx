@@ -13,7 +13,7 @@ import
         IAlbumReturnObject,
         IArtistReturnObject,
         IPlaylistReturnObject,
-        ITracksReturnObject
+        ITrackReturnObject
     } from './network/dtos/ISearchResponseDTO'
 
 export default function App() {
@@ -42,9 +42,18 @@ export default function App() {
             <ContentContainerSCP>
                 {searchResponse ?
                     <ResultsColumnSCP>
+                        <TitleSCP>Tracks</TitleSCP>
                         <ResultsRowSCP>
-                            <TitleSCP>Tracks</TitleSCP>
-                            <ResultCardCP data={(searchResponse as ISearchResponseDTO).tracks[1] as ITracksReturnObject}/>
+                            {(searchResponse as ISearchResponseDTO).tracks.items.map((track: ITrackReturnObject) =>
+                                <ResultCardCP
+                                    imageUrl={track.album.images[0].url}
+                                    title={track.name}
+                                    explicit={track.explicit}
+                                    subTitle={track.artists.map((artist, index) => {
+                                        return `${index !== 0 ? ', ' : ''}${artist.name}`
+                                    })}
+                                />
+                            )}
                         </ResultsRowSCP>
                         <ResultsRowSCP>
                             <TitleSCP>Albums</TitleSCP>
@@ -104,10 +113,14 @@ const ResultsColumnSCP = styled.div`
 `
 
 const ResultsRowSCP = styled.div`
-    height: 25%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    height: 325px;
 `
 
 const TitleSCP = styled.h1`
     font-family: CircularBlack;
     color: white;
+    margin-bottom: 0px;
 `
